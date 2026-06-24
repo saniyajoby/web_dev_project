@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cart - Haven Restaurant</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f5f5f5;
+    color:#333;
+}
+
+/* Header */
+header{
+    background:#111;
+    color:#fff;
+    padding:20px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:1.8rem;
+    font-weight:bold;
+    color:#ff9800;
+}
+
+nav a{
+    color:#fff;
+    text-decoration:none;
+    margin-left:25px;
+}
+
+nav a:hover{
+    color:#ff9800;
+}
+
+/* Title */
+h1{
+    text-align:center;
+    margin:40px 0;
+    font-size:2.5rem;
+}
+
+/* Cart Container */
+.cart-container{
+    width:90%;
+    max-width:1000px;
+    margin:0 auto 50px;
+    background:#fff;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Cart Item */
+.cart-item{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:20px 0;
+    border-bottom:1px solid #ddd;
+}
+
+.item-info{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.item-name{
+    font-size:1.2rem;
+    font-weight:bold;
+}
+
+.item-price{
+    color:#ff9800;
+    font-weight:bold;
+}
+
+/* Quantity */
+.quantity{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.quantity button{
+    width:30px;
+    height:30px;
+    border:none;
+    background:#ff9800;
+    color:white;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.remove-btn{
+    background:#dc3545;
+    color:white;
+    border:none;
+    padding:8px 15px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.remove-btn:hover{
+    background:#c82333;
+}
+
+.quantity span{
+    font-size:1.1rem;
+}
+
+/* Total */
+.total-section{
+    text-align:right;
+    margin-top:30px;
+}
+
+.total-section h2{
+    margin-bottom:20px;
+}
+
+/* Buttons */
+.buttons{
+    display:flex;
+    justify-content:space-between;
+    margin-top:30px;
+}
+
+.btn{
+    background:#ff9800;
+    color:white;
+    text-decoration:none;
+    padding:12px 24px;
+    border-radius:6px;
+    font-weight:bold;
+}
+
+.btn:hover{
+    background:#e68900;
+}
+
+.checkout{
+    background:#28a745;
+}
+
+.checkout:hover{
+    background:#218838;
+}
+
+/* Footer */
+footer{
+    background:#111;
+    color:#fff;
+    text-align:center;
+    padding:20px;
+}
+
+@media(max-width:768px){
+
+    .cart-item{
+        flex-direction:column;
+        gap:15px;
+        text-align:center;
+    }
+
+    .buttons{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .btn{
+        text-align:center;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<header>
+    <div class="logo">Haven</div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#cuisines">Cuisines</a>
+        <a href="cart.html">Cart</a>
+    </nav>
+</header>
+
+<h1>Your Cart</h1>
+
+<div class="cart-container">
+
+    <div id="cartItems"></div>
+
+    <div class="total-section">
+        <h2 id="total">Total: ₹0</h2>
+    </div>
+
+    <div class="buttons">
+        <a href="index.html" class="btn">Continue Shopping</a>
+        <a href="#" class="btn checkout">Proceed to Checkout</a>
+    </div>
+
+</div>
+
+<script>
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+const cartItems = document.getElementById("cartItems");
+
+function saveCart() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function increase(index){
+    cart[index].quantity++;
+    saveCart();
+    renderCart();
+}
+
+function decrease(index){
+    if(cart[index].quantity > 1){
+        cart[index].quantity--;
+    } else {
+        cart.splice(index,1);
+    }
+
+    saveCart();
+    renderCart();
+}
+
+function removeItem(index){
+    cart.splice(index,1);
+    saveCart();
+    renderCart();
+}
+
+function renderCart(){
+
+    cartItems.innerHTML = "";
+
+    let total = 0;
+
+    cart.forEach((item,index)=>{
+
+        total += item.price * item.quantity;
+
+        cartItems.innerHTML += `
+        <div class="cart-item">
+
+            <div class="item-info">
+                <div>
+                    <div class="item-name">${item.name}</div>
+                    <div class="item-price">₹${item.price}</div>
+                </div>
+            </div>
+
+            <div class="quantity">
+
+                <button onclick="decrease(${index})">−</button>
+
+                <span>${item.quantity}</span>
+
+                <button onclick="increase(${index})">+</button>
+
+            </div>
+
+            <div>
+                <strong>₹${item.price * item.quantity}</strong>
+                <br><br>
+                <button class="remove-btn"
+                        onclick="removeItem(${index})">
+                    Remove
+                </button>
+            </div>
+
+        </div>
+        `;
+    });
+
+    document.getElementById("total").innerText =
+    "Total: ₹" + total;
+}
+
+renderCart();
+
+</script>
+
+<footer>
+    <p>© 2025 Haven Restaurant. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

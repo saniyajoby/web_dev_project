@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chinese Cuisine</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f5f5f5;
+    color:#333;
+}
+
+/* Header */
+header{
+    background:#111;
+    color:#fff;
+    padding:20px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:1.8rem;
+    font-weight:bold;
+    color:#ff9800;
+}
+
+nav a{
+    color:#fff;
+    text-decoration:none;
+    margin-left:25px;
+}
+
+nav a:hover{
+    color:#ff9800;
+}
+
+/* Page Title */
+h1{
+    text-align:center;
+    margin:40px 0;
+    font-size:2.5rem;
+}
+
+/* Menu Grid */
+.menu-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    
+    column-gap:50px;  /* space between columns */
+    row-gap:45px;     /* space between rows */
+
+
+    width: 85%;
+    max-width:1200px;
+    margin:0 auto 60px;
+}
+
+.card{
+    background:#fff;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,0.12);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 12px 25px rgba(0,0,0,0.18);
+}
+
+.card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+}
+
+.content{
+    padding:22px;
+}
+
+.content h3{
+    font-size:1.5rem;
+    margin-bottom:12px;
+}
+
+.content p{
+    font-size:1.05rem;
+    margin-bottom:10px;
+}
+
+.price{
+    color:#ff9800;
+    font-weight:bold;
+    font-size:1.1rem;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:10px;
+    background:#ff9800;
+    color:#fff;
+    text-decoration:none;
+    padding:10px 18px;
+    border-radius:5px;
+    font-weight:bold;
+}
+
+.btn:hover{
+    background:#e68900;
+}
+
+/* Footer */
+footer{
+    background:#111;
+    color:#fff;
+    text-align:center;
+    padding:20px;
+}
+
+/* Responsive */
+@media(max-width:992px){
+    .menu-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px){
+    .menu-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Haven</div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#cuisines">Cuisines</a>
+        <a href="cart.html">Cart</a>
+    </nav>
+</header>
+
+<h1>Chinese Cuisine</h1>
+
+<div class="menu-grid">
+
+    <div class="card">
+        <img src="images/hakka noodles.jpg" alt="Hakka Noodles">
+        <div class="content">
+            <h3>Hakka Noodles</h3>
+            <p>Stir-fried noodles with vegetables.</p>
+            <p class="price">₹220</p>
+            <button class="btn" onclick="addToCart('Hakka Noodles',220)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/schezwan noodles.jpeg" alt="Schezwan Noodles">
+        <div class="content">
+            <h3>Schezwan Noodles</h3>
+            <p>Spicy noodles tossed in Schezwan sauce.</p>
+            <p class="price">₹240</p>
+            <button class="btn" onclick="addToCart('Schezwan Noodles',240)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/fried rice.jpg" alt="Fried Rice">
+        <div class="content">
+            <h3>Fried Rice</h3>
+            <p>Classic wok-fried rice.</p>
+            <p class="price">₹210</p>
+            <button class="btn" onclick="addToCart('Fried Rice',210)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/chicken manchurian.jpg" alt="Chicken Manchurian">
+        <div class="content">
+            <h3>Chicken Manchurian</h3>
+            <p>Crispy chicken in savory sauce.</p>
+            <p class="price">₹280</p>
+            <button class="btn" onclick="addToCart('Chicken Manchurian',280)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/chilli chicken.jpg" alt="Chilli Chicken">
+        <div class="content">
+            <h3>Chilli Chicken</h3>
+            <p>Popular spicy Indo-Chinese chicken.</p>
+            <p class="price">₹270</p>
+            <button class="btn" onclick="addToCart('Chilli Chicken',270)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/dragon chicken.jpg" alt="Dragon Chicken">
+        <div class="content">
+            <h3>Dragon Chicken</h3>
+            <p>Crispy chicken strips in spicy sauce.</p>
+            <p class="price">₹320</p>
+            <button class="btn" onclick="addToCart('Dragon Chicken',320)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/kung pao chicken.jpg" alt="Kung Pao Chicken">
+        <div class="content">
+            <h3>Kung Pao Chicken</h3>
+            <p>Chicken with peanuts and vegetables.</p>
+            <p class="price">₹310</p>
+            <button class="btn" onclick="addToCart('Kung Pao Chicken',310)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/sweet sour chicken.jpeg" alt="Sweet & Sour Chicken">
+        <div class="content">
+            <h3>Sweet & Sour Chicken</h3>
+            <p>Chicken in tangy sweet sauce.</p>
+            <p class="price">₹290</p>
+            <button class="btn" onclick="addToCart('Sweet & Sour Chicken',290)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/spring rolls.jpeg" alt="Spring Rolls">
+        <div class="content">
+            <h3>Spring Rolls</h3>
+            <p>Crispy vegetable rolls.</p>
+            <p class="price">₹180</p>
+            <button class="btn" onclick="addToCart('Spring Rolls',180)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/dim sum.jpeg" alt="Dim Sum">
+        <div class="content">
+            <h3>Dim Sum</h3>
+            <p>Steamed dumplings with fillings.</p>
+            <p class="price">₹250</p>
+            <button class="btn" onclick="addToCart('Dim Sum',250)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/veg momos.jpeg" alt="Veg Momos">
+        <div class="content">
+            <h3>Veg Momos</h3>
+            <p>Steamed vegetable dumplings.</p>
+            <p class="price">₹180</p>
+            <button class="btn" onclick="addToCart('Veg Momos',180)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/hot sour soup.jpeg" alt="Hot & Sour Soup">
+        <div class="content">
+            <h3>Hot & Sour Soup</h3>
+            <p>Tangy and spicy Chinese soup.</p>
+            <p class="price">₹170</p>
+            <button class="btn" onclick="addToCart('Hot & Sour Soup',170)">Add to Cart</button>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 Haven Restaurant. All Rights Reserved.</p>
+</footer>
+
+<script>
+function addToCart(name, price, image){
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let existingItem = cart.find(item => item.name === name);
+
+    if(existingItem){
+        existingItem.quantity += 1;
+    }else{
+        cart.push({
+            name: name,
+            price: price,
+            image: image,
+            quantity: 1
+        });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert(name + " added to cart!");
+}
+</script>
+
+</body>
+</html>

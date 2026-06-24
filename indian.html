@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indian Cuisine</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f5f5f5;
+    color:#333;
+}
+
+/* Header */
+header{
+    background:#111;
+    color:#fff;
+    padding:20px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:1.8rem;
+    font-weight:bold;
+    color:#ff9800;
+}
+
+nav a{
+    color:#fff;
+    text-decoration:none;
+    margin-left:25px;
+}
+
+nav a:hover{
+    color:#ff9800;
+}
+
+/* Page Title */
+h1{
+    text-align:center;
+    margin:40px 0;
+    font-size:2.5rem;
+}
+
+/* Menu Grid */
+.menu-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    column-gap:50px;
+    row-gap:45px;
+
+    width:80%;
+    max-width:1200px;
+    margin:0 auto 60px;
+}
+
+.card{
+    background:#fff;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,0.12);
+    transition:0.3s;
+    display:flex;
+    flex-direction:column;
+    height:100%;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 12px 25px rgba(0,0,0,0.18);
+}
+
+.card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+}
+
+.content{
+    padding:22px;
+    flex-grow:1;
+}
+
+.content h3{
+    font-size:1.5rem;
+    margin-bottom:12px;
+}
+
+.content p{
+    font-size:1.05rem;
+    margin-bottom:10px;
+}
+
+.price{
+    color:#ff9800;
+    font-weight:bold;
+    font-size:1.1rem;
+}
+
+.image-box{
+    width:100%;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:10px;
+    background:#ff9800;
+    color:#fff;
+    text-decoration:none;
+    padding:10px 18px;
+    border-radius:5px;
+    font-weight:bold;
+}
+
+.btn:hover{
+    background:#e68900;
+}
+
+/* Responsive */
+@media(max-width:992px){
+    .menu-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px){
+    .menu-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+/* Footer */
+footer{
+    background:#111;
+    color:#fff;
+    text-align:center;
+    padding:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Haven</div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#cuisines">Cuisines</a>
+        <a href="cart.html">Cart</a>
+    </nav>
+</header>
+
+<h1>Indian Cuisine</h1>
+
+<div class="menu-grid">
+
+    <div class="card">
+        <img src="images/chicken biryani.jpg" alt="Chicken Biryani">
+        <div class="content">
+            <h3>Chicken Biryani</h3>
+            <p>Fragrant rice cooked with spices and chicken.</p>
+            <p class="price">₹280</p>
+            <button class="btn" onclick="addToCart('Chicken Biryani',280,'images/chicken biryani.jpg')">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/butter chicken.jpeg" alt="Butter Chicken">
+        <div class="content">
+            <h3>Butter Chicken</h3>
+            <p>Creamy tomato-based chicken curry.</p>
+            <p class="price">₹320</p>
+            <button class="btn" onclick="addToCart('Butter Chicken',320,'images/butter chicken.jpeg')">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/paneer tikka.jpeg" alt="Paneer Tikka">
+        <div class="content">
+            <h3>Paneer Tikka</h3>
+            <p>Grilled cottage cheese marinated in aromatic spices.</p>
+            <p class="price">₹250</p>
+            <button class="btn" onclick="addToCart('Paneer Tikka',250,'images/paneer tikka.jpeg')">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/masala dosa.jpeg" alt="Masala Dosa">
+        <div class="content">
+            <h3>Masala Dosa</h3>
+            <p>Crispy dosa filled with flavorful potato masala.</p>
+            <p class="price">₹120</p>
+            <button class="btn" onclick="addToCart('Masala Dosa',120,'images/masala dosa.jpeg')">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/palak paneer.jpeg" alt="Palak Paneer">
+        <div class="content">
+            <h3>Palak Paneer</h3>
+            <p>Fresh paneer cubes cooked in rich spinach gravy.</p>
+            <p class="price">₹240</p>
+            <button class="btn" onclick="addToCart('Palak Paneer',240,'images/palak paneer.jpeg')">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/rogan josh.jpeg" alt="Rogan Josh">
+        <div class="content">
+            <h3>Rogan Josh</h3>
+            <p>Traditional Kashmiri lamb curry with fragrant spices.</p>
+            <p class="price">₹350</p>
+            <button class="btn" onclick="addToCart('Rogan Josh',350,'images/rogan josh.jpeg')">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/tandoori chicken.jpeg" alt="Tandoori Chicken">
+        <div class="content">
+            <h3>Tandoori Chicken</h3>
+            <p>Char-grilled chicken marinated in yogurt and spices.</p>
+            <p class="price">₹340</p>
+            <button class="btn" onclick="addToCart('Tandoori Chicken',340,'images/tandoori chicken.jpeg')">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/chole bhature.jpeg" alt="Chole Bhature">
+        <div class="content">
+            <h3>Chole Bhature</h3>
+            <p>Spiced chickpea curry served with fluffy fried bread.</p>
+            <p class="price">₹180</p>
+            <button class="btn" onclick="addToCart('Chole Bhature',180,'images/chole bhature.jpeg')">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/veg thali.jpeg" alt="Veg Thali">
+        <div class="content">
+            <h3>Veg Thali</h3>
+            <p>A complete vegetarian meal with assorted delicacies.</p>
+            <p class="price">₹260</p>
+            <button class="btn" onclick="addToCart('Veg Thali',260,'images/veg thali.jpeg')">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/fish curry.jpeg" alt="Fish Curry">
+        <div class="content">
+            <h3>Fish Curry</h3>
+            <p>Traditional coastal fish curry rich in flavor.</p>
+            <p class="price">₹300</p>
+            <button class="btn" onclick="addToCart('Fish Curry',300,'images/fish curry.jpeg')">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/malabar porotta.jpeg" alt="Malabar Parotta">
+        <div class="content">
+            <h3>Malabar Parotta</h3>
+            <p>Layered flaky Kerala-style bread served fresh.</p>
+            <p class="price">₹90</p>
+            <button class="btn" onclick="addToCart('Malabar Parotta',90,'images/malabar porotta.jpeg')">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/hyderabadi biriyani.jpeg" alt="Hyderabadi Biryani">
+        <div class="content">
+            <h3>Hyderabadi Biryani</h3>
+            <p>Authentic dum-cooked biryani packed with spices.</p>
+            <p class="price">₹320</p>
+            <button class="btn" onclick="addToCart('Hyderabadi Biryani',320,'images/hyderabadi biriyani.jpeg')">Add to Cart</button>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 Haven Restaurant. All Rights Reserved.</p>
+</footer>
+
+<script>
+function addToCart(name, price, image){
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let existingItem = cart.find(item => item.name === name);
+
+    if(existingItem){
+        existingItem.quantity += 1;
+    }else{
+        cart.push({
+            name: name,
+            price: price,
+            image: image,
+            quantity: 1
+        });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert(name + " added to cart!");
+}
+</script>
+
+</body>
+</html>

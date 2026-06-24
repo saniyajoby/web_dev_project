@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desserts and Beverages</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f5f5f5;
+    color:#333;
+}
+
+/* Header */
+header{
+    background:#111;
+    color:#fff;
+    padding:20px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:1.8rem;
+    font-weight:bold;
+    color:#ff9800;
+}
+
+nav a{
+    color:#fff;
+    text-decoration:none;
+    margin-left:25px;
+}
+
+nav a:hover{
+    color:#ff9800;
+}
+
+/* Page Title */
+h1{
+    text-align:center;
+    margin:40px 0;
+    font-size:2.5rem;
+}
+
+/* Menu Grid */
+.menu-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    
+    column-gap:50px;
+    row-gap:45px;
+
+    width:85%;
+    max-width:1200px;
+    margin:0 auto 60px;
+}
+
+.card{
+    background:#fff;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,0.12);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 12px 25px rgba(0,0,0,0.18);
+}
+
+
+.card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+}
+
+.content{
+    padding:22px;
+}
+
+.content h3{
+    font-size:1.5rem;
+    margin-bottom:12px;
+}
+
+.content p{
+    font-size:1.05rem;
+    margin-bottom:10px;
+}
+
+.price{
+    color:#ff9800;
+    font-weight:bold;
+    font-size:1.1rem;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:10px;
+    background:#ff9800;
+    color:#fff;
+    text-decoration:none;
+    padding:10px 18px;
+    border-radius:5px;
+    font-weight:bold;
+}
+
+.btn:hover{
+    background:#e68900;
+}
+
+/* Footer */
+footer{
+    background:#111;
+    color:#fff;
+    text-align:center;
+    padding:20px;
+}
+
+/* Responsive */
+@media(max-width:992px){
+    .menu-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px){
+    .menu-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Haven</div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#cuisines">Cuisines</a>
+        <a href="cart.html">Cart</a>
+    </nav>
+</header>
+
+<h1>Desserts and Beverages</h1>
+
+<div class="menu-grid">
+
+    <div class="card">
+        <img src="images/chocolate brownie.jpeg" alt="Chocolate Brownie">
+        <div class="content">
+            <h3>Chocolate Brownie</h3>
+            <p>Rich chocolate brownie served warm.</p>
+            <p class="price">₹180</p>
+            <button class="btn" onclick="addToCart('Chocolate Brownie',180)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/cheesecake.jpeg" alt="Cheesecake">
+        <div class="content">
+            <h3>Cheesecake</h3>
+            <p>Creamy cheesecake with a buttery crust.</p>
+            <p class="price">₹220</p>
+            <button class="btn" onclick="addToCart('Cheesecake',220)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/tiramisu.jpeg" alt="Tiramisu">
+        <div class="content">
+            <h3>Tiramisu</h3>
+            <p>Classic Italian coffee-flavored dessert.</p>
+            <p class="price">₹250</p>
+            <button class="btn" onclick="addToCart('Tiramisu',250)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/ice cream sundae.jpeg" alt="Ice Cream Sundae">
+        <div class="content">
+            <h3>Ice Cream Sundae</h3>
+            <p>Vanilla ice cream topped with chocolate syrup.</p>
+            <p class="price">₹170</p>
+            <button class="btn" onclick="addToCart('Ice Cream Sundae',170)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/gulab jamun.jpeg" alt="Gulab Jamun">
+        <div class="content">
+            <h3>Gulab Jamun</h3>
+            <p>Soft milk dumplings soaked in sugar syrup.</p>
+            <p class="price">₹120</p>
+            <button class="btn" onclick="addToCart('Gulab Jamun',120)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/fruit salad.jpeg" alt="Fruit Salad">
+        <div class="content">
+            <h3>Fruit Salad</h3>
+            <p>Fresh seasonal fruits served chilled.</p>
+            <p class="price">₹140</p>
+            <button class="btn" onclick="addToCart('Fruit Salad',140)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/lime juice.jpeg" alt="Fresh Lime Juice">
+        <div class="content">
+            <h3>Fresh Lime Juice</h3>
+            <p>Refreshing lime drink served cold.</p>
+            <p class="price">₹90</p>
+            <button class="btn" onclick="addToCart('Fresh Lime Juice',90)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/mango shake.jpeg" alt="Mango Shake">
+        <div class="content">
+            <h3>Mango Shake</h3>
+            <p>Creamy mango shake made from fresh mangoes.</p>
+            <p class="price">₹160</p>
+            <button class="btn" onclick="addToCart('Mango Shake',160)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/cold coffee.jpeg" alt="Cold Coffee">
+        <div class="content">
+            <h3>Cold Coffee</h3>
+            <p>Chilled coffee blended with milk and ice.</p>
+            <p class="price">₹150</p>
+            <button class="btn" onclick="addToCart('Cold Coffee',150)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/cappucino.jpeg" alt="Cappuccino">
+        <div class="content">
+            <h3>Cappuccino</h3>
+            <p>Freshly brewed coffee with milk foam.</p>
+            <p class="price">₹140</p>
+            <button class="btn" onclick="addToCart('Cappuccino',140)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/hot chocolate.jpeg" alt="Hot Chocolate">
+        <div class="content">
+            <h3>Hot Chocolate</h3>
+            <p>Warm chocolate drink topped with cream.</p>
+            <p class="price">₹180</p>
+            <button class="btn" onclick="addToCart('Hot Chocolate',180)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/mojito.jpeg" alt="Virgin Mojito">
+        <div class="content">
+            <h3>Virgin Mojito</h3>
+            <p>Refreshing mint and lime mocktail.</p>
+            <p class="price">₹160</p>
+            <button class="btn" onclick="addToCart('Virgin Mojito',160)">Add to Cart</button>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 Haven Restaurant. All Rights Reserved.</p>
+</footer>
+
+<script>
+function addToCart(name, price, image){
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let existingItem = cart.find(item => item.name === name);
+
+    if(existingItem){
+        existingItem.quantity += 1;
+    }else{
+        cart.push({
+            name: name,
+            price: price,
+            image: image,
+            quantity: 1
+        });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert(name + " added to cart!");
+}
+</script>
+
+</body>
+</html>
